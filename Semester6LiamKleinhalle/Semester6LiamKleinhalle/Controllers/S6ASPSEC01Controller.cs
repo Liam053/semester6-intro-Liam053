@@ -6,7 +6,7 @@ namespace Semester6LiamKleinhalle.Controllers
     public class S6ASPSEC01Controller : Controller
     {
         // Actie voor het weergeven van de encryptiepagina
-        public IActionResult Index()
+        public IActionResult S6ASPEC01()
         {
             return View();
         }
@@ -20,7 +20,7 @@ namespace Semester6LiamKleinhalle.Controllers
             // Stuur de versleutelde tekst naar de view via ViewBag
             ViewBag.EncryptedText = encryptedText;
             // Laad de indexpagina met de versleutelde tekst
-            return View("Index");
+            return View("S6ASPEC01");
         }
 
         // Actie voor het decrypten van de tekst (optioneel voor de decryptie functionaliteit)
@@ -32,7 +32,7 @@ namespace Semester6LiamKleinhalle.Controllers
             // Stuur de gedecryptte tekst naar de view via ViewBag
             ViewBag.DecryptedText = decryptedText;
             // Laad de indexpagina met de gedecryptte tekst
-            return View("Index");
+            return View("S6ASPEC01");
         }
     }
 }
