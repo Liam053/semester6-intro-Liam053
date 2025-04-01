@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Encryptie en Decryptie";
+}
+
+<h2>Encryptie en Decryptie</h2>
+
+<form method="post" asp-action="Encrypt">
+    <div class="mb-3">
+        <label for="inputText" class="form-label">Voer de tekst in die je wilt versleutelen:</label>
+        <input type="text" class="form-control" id="inputText" name="input" required />
+    </div>
+    <div class="mb-3">
+        <label for="key" class="form-label">Voer de numerieke sleutel in:</label>
+        <input type="number" class="form-control" id="key" name="key" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Versleutel</button>
+</form>
+
+@if (ViewBag.EncryptedText != null)
+{
+    <script>
+        // Modal tonen met versleutelde tekst
+        var myModal = new bootstrap.Modal(document.getElementById('encryptedTextModal'), {
+            keyboard: false
+        });
+        myModal.show();
+    </script>
+}
+
+<!-- Modal voor de versleutelde tekst -->
+<div class="modal fade" id="encryptedTextModal" tabindex="-1" aria-labelledby="encryptedTextModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="encryptedTextModalLabel">Versleutelde Tekst</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="encryptedText">@ViewBag.EncryptedText</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sluiten</button>
+                <button type="button" class="btn btn-primary" onclick="copyToClipboard()">Kopieer naar Klembord</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Kopieer functionaliteit
+        function copyToClipboard() {
+            var text = document.getElementById("encryptedText").innerText;
+            navigator.clipboard.writeText(text).then(function() {
+                alert("Tekst gekopieerd naar klembord!");
+            }).catch(function(err) {
+                alert("Er is iets misgegaan: " + err);
+            });
+        }
+    </script>
+}
