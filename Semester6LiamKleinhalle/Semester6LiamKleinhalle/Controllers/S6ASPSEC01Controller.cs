@@ -5,7 +5,6 @@ namespace Semester6LiamKleinhalle.Controllers
 {
     public class S6ASPSEC01Controller : Controller
     {
-        // Actie voor het weergeven van de encryptiepagina
         public IActionResult S6ASPEC01()
         {
             return View();
@@ -19,7 +18,6 @@ namespace Semester6LiamKleinhalle.Controllers
             return View("S6ASPEC01");
         }
 
-        // Actie voor het decrypten van de tekst (optioneel voor de decryptie functionaliteit)
         [HttpPost]
         public IActionResult Decrypt(string input, int key)
         {

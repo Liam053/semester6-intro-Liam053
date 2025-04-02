@@ -8,7 +8,6 @@ namespace Semester6LiamKleinhalle.Helpers
         // Charset voor encryptie en decryptie
         private const string Charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-        // Encryptie functie
         public static string Encrypt(string input, int key)
         {
             return new string(input.Select(c =>
@@ -18,7 +17,6 @@ namespace Semester6LiamKleinhalle.Helpers
             }).ToArray());
         }
 
-        // Decryptie functie
         public static string Decrypt(string input, int key)
         {
             return new string(input.Select(c =>
