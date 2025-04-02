@@ -11,15 +11,11 @@ namespace Semester6LiamKleinhalle.Controllers
             return View();
         }
 
-        // Actie voor het versleutelen van de tekst
         [HttpPost]
         public IActionResult Encrypt(string input, int key)
         {
-            // Versleutel de tekst
             string encryptedText = EncryptionFunctions.Encrypt(input, key);
-            // Stuur de versleutelde tekst naar de view via ViewBag
             ViewBag.EncryptedText = encryptedText;
-            // Laad de indexpagina met de versleutelde tekst
             return View("S6ASPEC01");
         }
 
