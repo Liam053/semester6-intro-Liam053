@@ -24,11 +24,39 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="S6ASPSEC01" asp-action="S6ASPEC01">Encryptie en Decryptie</a>
                         </li>
+
+                        @* Voeg links toe voor klas I0SD1 en I0SD3 gebaseerd op de claims *@
+                        @if (User.HasClaim(c => c.Type == "Klas" && c.Value == "I0SD1"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="KlasI0SD1" asp-action="Index">Klas I0SD1</a>
+                            </li>
+                        }
+
+                        @if (User.HasClaim(c => c.Type == "Klas" && c.Value == "I0SD3"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="KlasI0SD3" asp-action="Index">Klas I0SD3</a>
+                            </li>
+                        }
+
+                        @* Voeg links toe voor adminbeheer (indien admin) *@
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="User" asp-action="Index">Gebruikersbeheer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Role" asp-action="Index">Rollenbeheer</a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -44,5 +72,5 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
-</body> 
+</body>
 </html>
